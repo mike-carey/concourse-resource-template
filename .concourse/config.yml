@@ -1,0 +1,20 @@
+---
+git_resources:
+- name: source-code
+  uri: ((source-code.uri))
+  branch: ((source-code.branch))
+  private_key: ((source-code.private_key))
+  paths:
+    - Dockerfile
+    - assets/**
+- name: ci
+  uri: ((ci.uri))
+  branch: ((ci.branch))
+  private_key: ((ci.private_key))
+  paths:
+    - .concourse/**
+
+version_types:
+- patch
+- minor
+- major

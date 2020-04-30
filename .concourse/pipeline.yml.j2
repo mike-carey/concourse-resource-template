@@ -1,0 +1,21 @@
+---
+resources:
+{% for resource in git_resources %}
+- name: {{ resource.name }}-git
+  type: git
+  source:
+    uri: {{ resource.uri }}
+    branch: {{ resource.branch }}
+    private_key: {{ resource.private_key }}
+    paths: {{ resource.paths | tojson }}
+{% endfor %}
+
+- name: version
+  type: semver
+  source: &version-source
+    driver: git
+    initial_version: 1.0.0
+    file: version
+    uri: {{ version.uri }}
+    branch: {{ version.branch }}
+    private_key: {{ version.private_key }}

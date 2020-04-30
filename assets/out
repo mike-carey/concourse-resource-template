@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"/common.sh
+
+function resource_out() {
+  jq -rn \
+    --arg version "" \
+    '{
+      "version": $version
+    }'
+}
+
+if [[ ${BASH_SOURCE[0]} != $0 ]]; then
+  export -f resource_out
+else
+  set -euo pipefail
+
+  resource_out "${@:-}"
+  exit $?
+fi

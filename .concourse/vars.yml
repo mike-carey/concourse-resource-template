@@ -1,0 +1,17 @@
+---
+.defaults: &defaults
+  uri: git@github.com:mike-carey/concourse-version-demo.git
+  branch: master
+  private_key: ((git_private_key))
+
+source-code:
+  <<: *defaults
+  # branch: master
+
+ci:
+  <<: *defaults
+  # branch: master
+
+version:
+  <<: *defaults
+  branch: version

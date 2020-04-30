@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"/common.sh
+
+function resource_in() {
+  local dir="${1:-}"
+  if [[ -z "$dir" ]]; then
+    echo "Usage: $0 /path/to/destination" >&2
+    exit 1
+  fi
+
+  jq -rn \
+    --arg version "" \
+    '{
+      "version": $version
+    }'
+}
+
+if [[ ${BASH_SOURCE[0]} != $0 ]]; then
+  export -f resource_in
+else
+  set -euo pipefail
+
+  resource_in "${@:-}"
+  exit $?
+fi

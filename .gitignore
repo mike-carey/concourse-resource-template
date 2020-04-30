@@ -1,0 +1,44 @@
+## Base gitignore
+
+/.envrc
+/.env
+
+## OS Files
+
+# Mac OS
+.DS_Store
+._*
+.Trashes/
+
+# Linux
+*~
+*.swp
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+
+## Ignored Extensions
+
+*.bak
+*.log
+*.old
+*.out
+*.swp
+*.tmp
+
+# Archives
+*.zip
+*.tar
+*.tgz
+*.jar
+*.war
+
+# Only archives allowed by default
+!maven-wrapper.jar
+!gradle-wrapper.jar
+
+# .gitignore
